@@ -1,0 +1,7 @@
+parameters:
+#    w4_y_sandbox.example.class: W4Y\Bundle\SandboxBundle\Example
+
+services:
+#    w4_y_sandbox.example:
+#        class: %w4_y_sandbox.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

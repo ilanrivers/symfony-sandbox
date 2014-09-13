@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div data-ng-app="myApp" data-ng-controller="GridController" id="container" >
+
+    <div
+        style="width:200px; height:300px; margin: 5px; float:left; border:solid 1px #999999;"
+        data-ng-repeat="data in gridData | limitTo : currentLimit ">
+        #<span data-ng-bind="{[{ data.id }]}"></span>
+        <br><br><br>
+        <img src="{[{ data.image }]}" style="max-width:200px; max-height: 300px" />
+
+    </div>
+
+    <div style="clear:both; margin: 0 auto; text-align: center">
+        <button data-ng:click="getMore()">Fetch more</button>
+    </div>
+
+</div>
+
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<script type="text/javascript" src="{{ asset('bundles/w4ysandbox/assets/js/GridController.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/w4ysandbox/assets/js/AngularApp.js') }}"></script>
+
+</body>
+</html>
