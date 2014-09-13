@@ -1,0 +1,3 @@
+w4y_angularjs_load:
+    path:     /angularjs-load
+    defaults: { _controller: W4YAngularJsBundle:Default:index }

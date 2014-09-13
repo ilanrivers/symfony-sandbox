@@ -1,0 +1,7 @@
+parameters:
+#    w4_y_angular_js.example.class: W4Y\Bundle\AngularJsBundle\Example
+
+services:
+#    w4_y_angular_js.example:
+#        class: %w4_y_angular_js.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

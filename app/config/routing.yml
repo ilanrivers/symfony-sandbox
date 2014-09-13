@@ -1,3 +1,7 @@
+w4y_angular_js:
+    resource: "@W4YAngularJsBundle/Resources/config/routing.yml"
+    prefix:   /
+
 w4y_sandbox:
     resource: "@W4YSandboxBundle/Resources/config/routing.yml"
     prefix:   /

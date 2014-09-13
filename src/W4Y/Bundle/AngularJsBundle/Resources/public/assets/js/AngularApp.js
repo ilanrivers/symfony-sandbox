@@ -7,7 +7,12 @@ app.config(function($interpolateProvider) {
     }
 );
 
-// Add the routing as a service so it can be injected by the application.
+// Add the ApplicationService as a service so it can be injected by the application.
+app.factory('ApplicationService', ['$http', 'SymfonyRouting', function ($http, routing) {
+    return new ApplicationService($http, routing);
+}]);
+
+// Add the symfony routing as a service so it can be injected by the application.
 app.factory('SymfonyRouting', function() {
     return Routing;
 });

@@ -2,6 +2,10 @@ w4y_sandbox_homepage:
     path:     /
     defaults: { _controller: W4YSandboxBundle:Default:index }
 
+w4y_sandbox_homepage2:
+    path:     /angularapp
+    defaults: { _controller: W4YSandboxBundle:Default:index }
+
 w4y_sandbox_rest_car_data:
     path:     /rest/car-data.json
     defaults: { _controller: W4YSandboxBundle:Default:jsonCarData }

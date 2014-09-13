@@ -1,22 +1,23 @@
 /**
- * Angular Grid Controller
+ * Grid Controller
  *
  * @param $scope
  * @param $http
  * @param routing
  * @constructor
  */
-var GridController = function ($scope, $http, routing) {
+var GridController = function (application, $scope) {
     this.scope = $scope;
-    this.http = $http;
-    this.routing = routing;
+
+    application.setScope(this.scope);
+    this.application = application;
 
     this.init();
 };
 
 // Inject services by annotation so javascript minification will not break code.
 // These services will be injected to the controllers constructor arguments.
-GridController.$inject = ['$scope', '$http', 'SymfonyRouting'];
+GridController.$inject = ['ApplicationService', '$scope'];
 
 // GridController functions
 GridController.prototype.init = function () {
@@ -30,14 +31,15 @@ GridController.prototype.init = function () {
     // Fetch data
     this.fetchGridData();
 
-    // Preload the grid data for when get more is clicked so more results
-    // can be displayed instantly.
+    // Preload the grid data for when get more is clicked so more results can be displayed instantly.
     setTimeout(function () {
         this.prefetchGridData();
-    }.bind(this), 1500);
+    }.bind(this), 1000);
 
     // Expose the getMore function to the application scope.
-    this.scope.getMore = this.getMore.bind(this);
+    this.application.expose([
+        {name: 'getMore', function: this.getMore.bind(this)}
+    ]);
 };
 
 /**
@@ -66,13 +68,13 @@ GridController.prototype.fetchGridData =  function (offset) {
     offset = offset ? offset : 0;
 
     // Build the request url.
-    var dataUrl = this.routing.generate('w4y_sandbox_rest_car_data', {
+    var dataUrl = this.application.getRouting().generate('w4y_sandbox_rest_car_data', {
         limit: this.resultsPerPage,
         offset: offset
     });
 
     // Do the request.
-    this.http.get(dataUrl).success(this.handleGridDataResponse.bind(this));
+    this.application.getHttp().get(dataUrl).success(this.handleGridDataResponse.bind(this));
 };
 
 /**
