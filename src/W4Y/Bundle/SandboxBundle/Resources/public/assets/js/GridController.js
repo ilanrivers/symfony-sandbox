@@ -19,7 +19,11 @@ var GridController = function (application, $scope) {
 // These services will be injected to the controllers constructor arguments.
 GridController.$inject = ['ApplicationService', '$scope'];
 
-// GridController functions
+// Register Grid Controller
+MyAngularApp.controller('GridController', GridController);
+
+
+// GridController prototype functions
 GridController.prototype.init = function () {
 
     this.resultsPerPage = 24;
@@ -99,3 +103,4 @@ GridController.prototype.prefetchGridData =  function () {
 GridController.prototype.handleGridDataResponse = function (response) {
     this.scope.gridData.push.apply(this.scope.gridData, response );
 };
+
